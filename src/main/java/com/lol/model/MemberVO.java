@@ -1,12 +1,24 @@
 package com.lol.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class MemberVO {
 
-    private int testNum;
+    private String lolId;
+    private String lolName;
+    private String lolPw;
 
+
+    @Override
+    public String toString() {
+        return "MemberVO{" +
+                "lolId='" + lolId + '\'' +
+                ", lolName='" + lolName + '\'' +
+                ", lolPw='" + lolPw + '\'' +
+                '}';
+    }
 }
+    
