@@ -26,6 +26,18 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	// spring security 의존 설정
+	// security을 추가하면 모든 요청에 인증을 필요로 하게되고
+	// 기본 유저가 생성됨
+	// userName : user  , Password : 콘솔에 출려고딘 로고문자
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// securityTest 의존 설정
+	//testImplementation 'org.springframework.security:spring-security-test'
+
+	// jpa 의존 설정
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 	//thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'

@@ -15,7 +15,7 @@ import javax.sql.DataSource;
     @MapperScan("com.lol.repository")
     public class MySQLConfig {
 
-
+        
         @Bean
         public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
             final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

@@ -1,27 +1,42 @@
 package com.lol.service;
 
 import com.lol.model.MemberVO;
-import com.lol.repository.MemberDao;
+import com.lol.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
     @Autowired
-    private MemberDao dao;
+    private MemberRepository repository;
+
 
     @Override
-    public String login(MemberVO vo) throws Exception {
+    public String loginCheck(MemberVO vo, HttpSession session) {
+        String name = repository.loginCheck(vo);
+        if (name != null) {
+            session.setAttribute("lolId", vo.getLolId());
+            session.setAttribute("lolName", name);
+        }
+        return name;
+    }
 
-        String id = "come145";
-        String password = "123123";
+    @Override
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
 
-        MemberVO test = new MemberVO();
+    @Override
+    public void memberInsert(MemberVO vo) {
+        repository.memberInsert(vo);
+    }
 
-        test.setLolId(id);
-        test.setLolPw(password);
-
-        return dao.login(test);
+    @Override
+    public List<MemberVO> memberList() {
+        return repository.memberList();
     }
 }
